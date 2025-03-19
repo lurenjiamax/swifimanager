@@ -49,5 +49,4 @@ class LocalWifiManager(reactContext: ReactApplicationContext) : ReactContextBase
         val connectivityManager = reactApplicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connectivityManager.requestNetwork(networkRequest, object : ConnectivityManager.NetworkCallback() {})
     }
-
 }
