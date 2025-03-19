@@ -133,10 +133,10 @@ function App(): React.JSX.Element {
       if (essid) {
         await LocalWifiManager.connectByBSSID(bssid, essid, null)
         Alert.alert("Success", `Connected to ${bssid}`)
+        getConnectedWifi()
       } else {
         Alert.alert("Error", `Failed to connect to ${bssid}, ESSID not found`)
       }
-      Alert.alert("Success", `Connected to ${bssid}`)
     }
     catch (error) {
       console.error("Error connecting to WiFi:", error)
@@ -193,6 +193,10 @@ function App(): React.JSX.Element {
   useEffect(() => {
     requestLocationPermission()
   }, [requestLocationPermission])
+
+  useEffect(() => {
+    getConnectedWifi()
+  }, [getConnectedWifi])
 
   const renderWifiItem = ({ item }: { item: WifiNetwork }) => {
     const signalInfo = getSignalStrength(item.level)
